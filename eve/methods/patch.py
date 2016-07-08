@@ -193,7 +193,9 @@ def patch_internal(resource, payload=None, concurrency_check=False,
             getattr(app, "on_update")(resource, updates, original)
             getattr(app, "on_update_%s" % resource)(updates, original)
 
-            updates = resolve_nested_documents(updates, updated)
+            if not config.PATCH_REPLACE_NESTED:
+                updates = resolve_nested_documents(updates, updated)
+                
             updated.update(updates)
 
             if config.IF_MATCH:

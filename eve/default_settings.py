@@ -247,3 +247,7 @@ MONGO_QUERY_BLACKLIST = ['$where', '$regex']
 # Explicitly set default write_concern to 'safe' (do regular
 # aknowledged writes). This is also the current PyMongo/Mongo default setting.
 MONGO_WRITE_CONCERN = {'w': 1}
+
+# Replace nested document when updating (True) or merge it with original (False)
+
+PATCH_REPLACE_NESTED = False
